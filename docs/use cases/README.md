@@ -40,43 +40,42 @@
 
 @startuml
 
- actor "Адміністратор" as ADMIN
+    actor "Адміністратор" as ADMIN
 
 
-usecase "<b>Search<b> \n Пошук інформації" as SRCH
-usecase "<b>DownloadTo<b> \n Завантаження даних в систему" as DWNLDT
-usecase "<b>DownloadFrom<b> \n Завантаження даних з системи" as DWNLDF
-usecase "<b>DataDeletion<b> \n Видалення даних з системи" as DD
+    usecase "<b>Search<b> \n Пошук інформації" as SRCH
+    usecase "<b>DownloadTo<b> \n Завантаження даних в систему" as DWNLDT
+    usecase "<b>DownloadFrom<b> \n Завантаження даних з системи" as DWNLDF
+    usecase "<b>DataDeletion<b> \n Видалення даних з системи" as DD
 
 
-usecase "<b>ChangeUserPermissions<b> \n Змінити доступ " as ACUP
-usecase "<b>ConsiderRequest<b> \n Розглянути запит користувача" as ACR
-usecase "<b>ApproveRequest<b> \n Одобрити запит користувача" as AAR
-usecase "<b>DenyRequest<b> \n Відхилити запит користувача" as ADR
+    usecase "<b>ChangeUserPermissions<b> \n Змінити доступ " as ACUP
+    usecase "<b>ConsiderRequest<b> \n Розглянути запит користувача" as ACR
+    usecase "<b>ApproveRequest<b> \n Одобрити запит користувача" as AAR
+    usecase "<b>DenyRequest<b> \n Відхилити запит користувача" as ADR
 
-usecase "<b>ІnformsTechnicalSupport<b> \n Повідомляє, що прийшов запит в Tехпідтримку" as ITS
+    usecase "<b>ІnformsTechnicalSupport<b> \n Повідомляє, що прийшов запит в Tехпідтримку" as ITS
 
 
-Admin -u-> SRCH
-Admin -u-> DWNLDT
-Admin -u-> DWNLDF
-Admin -r-> DD
+    Admin -u-> SRCH
+    Admin -u-> DWNLDT
+    Admin -u-> DWNLDF
+    Admin -r-> DD
 
-Admin -r-> ACUP
-Admin -l-> ACR
+    Admin -r-> ACUP
+    Admin -l-> ACR
 
-AAR .u.> ACR:extends
-ADR .d.> ACR:extends
+    AAR .u.> ACR:extends
+    ADR .d.> ACR:extends
 
-Admin -r-> ITS
+    Admin -r-> ITS
 
 @enduml
 
 </center>
 
 
-
-***ADMIN***
+## ADMIN
 
 ###Пошук інформації
 
