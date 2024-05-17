@@ -27,6 +27,38 @@
 
 </center>
 
+## Користувач
+
+<center style="
+    border-radius:4px;
+    border: 1px solid #cfd7e6;
+    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
+    padding: 1em;"
+>
+
+@startuml
+
+    actor "Користувач" as User
+  actor "Гість" as Guest
+
+    usecase "<b>Logout<b> \n Вихід з системи" as LOUT
+    usecase "<b>UploadRequest<b> \n Завантаження даних\n користувачем у систему" as UR
+    usecase "<b>EditRequest<b> \n Зміна запропонаваних\n даних користувачем" as ER
+    usecase "<b>DeleteRequest<b> \n Видалення запиту користувача" as DR
+    usecase "<b>Comment<b> \n Залишити коментар" as CMNT
+
+    User -u-> LOUT
+    User -u-> UR
+    User -u-> ER
+    User -u-> DR
+    User -u-> CMNT
+  
+  User -u-|> Guest
+
+@enduml
+
+</center>
+
 ## Сценарії використання
 
 ### Гість
