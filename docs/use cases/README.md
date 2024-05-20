@@ -16,7 +16,7 @@
     actor "Адміністратор" as Admin
 
     usecase "<b>Search<b> \n Пошук інформації" as SRCH
-  usecase "<b>Download<b> \n Завантаження даних з системи" as DWNLD
+	usecase "<b>Download<b> \n Завантаження даних з системи" as DWNLD
     usecase "<b>SignIn<b> \n Вхід в акаунт користувача" as SI  
     usecase "<b>SignUp<b> \n Реєстрація в системі" as SU
     
@@ -30,23 +30,23 @@
     usecase "<b>ApproveRequest<b> \n Одобрити запит користувача" as AR
     usecase "<b>DenyRequest<b> \n Відхилити запит користувача" as DREQ
 
-    Guest -u-> SRCH
-    Guest -u-> DWNLD
+    Guest -r-> SRCH
+    Guest -r-> DWNLD
     Guest -u-> SI
-  Guest -u-> SU
+	Guest -d-> SU
     
-    User -u-> LOUT
-    User -u-> UR
+    User -l-> LOUT
+    User -l-> UR
     User -u-> ER
     User -u-> DR
     User -u-> CMNT
     
-    Admin -u-> CUP 
-    Admin -u-> AR
-    Admin -u-> DREQ
+    Admin -d-> CUP 
+    Admin -d-> AR
+    Admin -d-> DREQ
     
     Admin -u-|> User
-    User -u-|> Guest
+    User -r-|> Guest
 
 @enduml
 
@@ -79,6 +79,36 @@
 
 </center>
 
+## Користувач
+
+<center style="
+    border-radius:4px;
+    border: 1px solid #cfd7e6;
+    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
+    padding: 1em;"
+>
+
+@startuml
+	
+	actor "Гість" as Guest
+
+    usecase "<b>Logout<b> \n Вихід з системи" as LOUT
+    usecase "<b>UploadRequest<b> \n Завантаження даних\n користувачем у систему" as UR
+    usecase "<b>EditRequest<b> \n Зміна запропонаваних\n даних користувачем" as ER
+    usecase "<b>DeleteRequest<b> \n Видалення запиту користувача" as DR
+    usecase "<b>Comment<b> \n Залишити коментар" as CMNT
+
+    User -u-> LOUT
+    User -u-> UR
+    User -u-> ER
+    User -u-> DR
+    User -u-> CMNT
+  
+	User -d-|> Guest
+
+@enduml
+
+</center>
 
 ## Адміністратор
 
@@ -98,69 +128,16 @@
     usecase "<b>ApproveRequest<b> \n Одобрити запит користувача" as AR
     usecase "<b>DenyRequest<b> \n Відхилити запит користувача" as DR
 
-    Admin -r-> CUP
-    Admin -r-> AR
-    Admin -r-> DR
+    Admin -u-> CUP
+    Admin -u-> AR
+    Admin -u-> DR
 
-    Admin -u-> User
-
-@enduml
-
-</center>
-
-
-## Користувач
->>>>>>> c108666eec5a347d37085631b3359711eb5044e0
-
-<center style="
-    border-radius:4px;
-    border: 1px solid #cfd7e6;
-    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
-    padding: 1em;"
->
-
-@startuml
-
-    actor "Користувач" as User
-<<<<<<< HEAD
-    actor "Адміністратор" as Admin
-
-    usecase "<b>ChangeUserPermissions<b> \n Змінити доступ " as CUP
-    usecase "<b>ApproveRequest<b> \n Одобрити запит користувача" as AR
-    usecase "<b>DenyRequest<b> \n Відхилити запит користувача" as DR
-
-    Admin -r-> CUP
-    Admin -r-> AR
-    Admin -r-> DR
-
-    Admin -u-> User
-=======
-  actor "Гість" as Guest
-
-    usecase "<b>Logout<b> \n Вихід з системи" as LOUT
-    usecase "<b>UploadRequest<b> \n Завантаження даних\n користувачем у систему" as UR
-    usecase "<b>EditRequest<b> \n Зміна запропонаваних\n даних користувачем" as ER
-    usecase "<b>DeleteRequest<b> \n Видалення запиту користувача" as DR
-    usecase "<b>Comment<b> \n Залишити коментар" as CMNT
-
-    User -u-> LOUT
-    User -u-> UR
-    User -u-> ER
-    User -u-> DR
-    User -u-> CMNT
-  
-  User -u-|> Guest
->>>>>>> c108666eec5a347d37085631b3359711eb5044e0
+    Admin -d-> User
 
 @enduml
 
 </center>
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c108666eec5a347d37085631b3359711eb5044e0
 ## Сценарії використання
 
 ### Гість
