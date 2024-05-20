@@ -1,5 +1,57 @@
 # Модель прецедентів
 
+## Загальна схема
+
+<center style="
+    border-radius:4px;
+    border: 1px solid #cfd7e6;
+    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
+    padding: 1em;"
+>
+
+@startuml
+
+    actor "Гість" as Guest
+    actor "Користувач" as User
+    actor "Адміністратор" as Admin
+
+    usecase "<b>Search<b> \n Пошук інформації" as SRCH
+  usecase "<b>Download<b> \n Завантаження даних з системи" as DWNLD
+    usecase "<b>SignIn<b> \n Вхід в акаунт користувача" as SI  
+    usecase "<b>SignUp<b> \n Реєстрація в системі" as SU
+    
+    usecase "<b>Logout<b> \n Вихід з системи" as LOUT
+    usecase "<b>UploadRequest<b> \n Завантаження даних\n користувачем у систему" as UR
+    usecase "<b>EditRequest<b> \n Зміна запропонаваних\n даних користувачем" as ER
+    usecase "<b>DeleteRequest<b> \n Видалення запиту користувача" as DR
+    usecase "<b>Comment<b> \n Залишити коментар" as CMNT
+
+    usecase "<b>ChangeUserPermissions<b> \n Змінити доступ до функцій системи\n конкретному користувачеві" as CUP
+    usecase "<b>ApproveRequest<b> \n Одобрити запит користувача" as AR
+    usecase "<b>DenyRequest<b> \n Відхилити запит користувача" as DREQ
+
+    Guest -u-> SRCH
+    Guest -u-> DWNLD
+    Guest -u-> SI
+  Guest -u-> SU
+    
+    User -u-> LOUT
+    User -u-> UR
+    User -u-> ER
+    User -u-> DR
+    User -u-> CMNT
+    
+    Admin -u-> CUP 
+    Admin -u-> AR
+    Admin -u-> DREQ
+    
+    Admin -u-|> User
+    User -u-|> Guest
+
+@enduml
+
+</center>
+
 ## Гість
 
 <center style="
