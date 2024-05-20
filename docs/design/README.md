@@ -87,3 +87,71 @@
 @enduml
 
 </center>
+
+
+## ER-модель
+
+<center style="
+    border-radius:4px;
+    border: 1px solid #cfd7e6;
+    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
+    padding: 1em;"
+>
+
+@startuml
+entity User <<ENTITY>> #ffedba {
+    password: TEXT
+    login: TEXT
+    username: TEXT
+    email: TEXT
+    id: NUMBER
+}
+
+entity Data <<ENTITY>> #ffedba {
+    date: DATETIME
+    id: NUMBER
+    name: TEXT
+    format: TEXT
+}
+
+entity Admin <<ENTITY>> #ffedba {
+}
+
+entity Request <<ENTITY>> #ffedba {
+    id: NUMBER
+    type: NUMBER
+    message: TEXT
+}
+
+entity Permission <<ENTITY>> #ffedba {
+    comment: BOOL
+    post: BOOL
+}
+
+entity Comment <<ENTITY>> #ffedba {
+    text: TEXT
+}
+
+entity Tag <<ENTITY>> #ffedba {
+    id: NUMBER
+    name: TEXT
+}
+
+Admin -r-|> User
+
+User "1,1" -- "0,*" Request
+User "1,1" -- "0,*" Comment
+User "1,1" -- "1,1" Permission
+
+Data "0,*" -r- "0,*" Admin
+Data "1,1" -r- "0,*" Comment
+Data "1,1" -- "1,1" Request
+Data "0,*" -u- "0,*" Tag
+
+Admin "0,*" -- "0,*" Permission
+Admin "0,*" -- "0,*" Request
+Admin "0,*" -l- "0,*" Comment
+
+@enduml
+
+</center>
