@@ -155,3 +155,8 @@ Admin "0,*" -l- "0,*" Comment
 @enduml
 
 </center>
+
+## Реляційна схемa
+
+
+
