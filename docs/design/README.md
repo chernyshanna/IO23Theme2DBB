@@ -158,5 +158,4 @@ Admin "0,*" -l- "0,*" Comment
 
 ## Реляційна схемa
 
-
-
+![relation_scheme](./relationalsscheme1.png)
