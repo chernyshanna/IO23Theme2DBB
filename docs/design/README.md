@@ -125,7 +125,6 @@ entity Role <<ENTITY>> #ffedba {
 entity Request <<ENTITY>> #ffedba {
   id: NUMBER
   type: NUMBER
-  message: TEXT
 }
 
 entity Permission <<ENTITY>> #ffedba {
@@ -160,4 +159,4 @@ Data "0,*" -- "1,1" Tag
 
 ## Реляційна схемa
 
-![relation_scheme](./relationalsscheme1.png)
+![relation_scheme](./relationscheme1.png)
